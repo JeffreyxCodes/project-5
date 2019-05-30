@@ -31,13 +31,39 @@ h4 {
   margin: 0;
 }
 
+h1 {
+  font-size: 4.2rem;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px palegreen,
+               2px -2px lightskyblue,
+               -2px -2px plum,
+               -2px 2px coral;
+}
 
 
 
 /*****************************************************************************************
  > form
 *****************************************************************************************/
+form {
+  height: 100vh;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+form input,
+textarea {
+  margin: 5px auto;
+  padding: 10px;
+}
+
+textarea {
+  width: 80%;
+}
 
 
 
@@ -50,7 +76,7 @@ h4 {
   padding: 40px 0;
 }
 
-.poll-container:nth-child(even) {
+.poll-container:nth-child(odd) {
   background-color: rgb(233, 187, 144);
   /* color: white; */
 }

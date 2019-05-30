@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
+import Form from './Form.js';
 import Poll from './Poll.js';
 
 class App extends Component {
@@ -36,6 +37,12 @@ class App extends Component {
     chart.update();
   }
 
+  addPoll = (poll) => {
+    const dbRef = firebase.database().ref();
+
+    dbRef.push(poll);
+  }
+
   componentDidMount() {
     const dbRef = firebase.database().ref();
 
@@ -61,6 +68,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <h1>(╯°□°)╯︵ ┻━┻</h1>
+
+        <Form addPoll={this.addPoll}/>
+
         {
           this.state.isLoading
             ? <h2>Loading...</h2>
