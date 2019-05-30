@@ -7,6 +7,10 @@ class Poll extends Component {
     super(props);
     this.chartRef = React.createRef();
     this.chart = undefined;
+
+    this.state = {
+      voted: false
+    }
   }
 
   componentDidMount() {
@@ -69,6 +73,19 @@ class Poll extends Component {
     });
   }
 
+  vote = (votes, index) => {
+    this.props.addVote(
+      this.chart, // passing chart so chart.update() can be used
+      this.props.id, // the unique key of this particular poll
+      votes, // the votes array is pass to make access and hencing updating it easier
+      index // the index of the vote to update
+    )
+
+    this.setState({
+      voted: true
+    });
+  }
+
   render() {
     const {
       question,
@@ -83,27 +100,28 @@ class Poll extends Component {
           <h2>{question}</h2>
           <h3>By: {name}</h3>
           <canvas ref={this.chartRef} aria-label="A poll data" role="img"></canvas>
-          <h4>Vote For:</h4>
-          {
-            choiceNames.map((choice, index) => {
-              return (
-                <div key={index}>
-                  <label className="visually-hidden">{choice}: {votes[index]}</label>
 
-                  <button onClick={() => {
-                    this.props.addVote(
-                      this.chart, // passing chart so chart.update() can be used
-                      this.props.id, // the unique key of this particular poll
-                      votes, // the votes array is pass to make access and hencing updating it easier
-                      index // the index of the vote to update
+          {
+            this.state.voted
+              ? <h4>Thanks for voting</h4>
+              : <div>
+                <h4>Vote For:</h4>
+                {
+                  choiceNames.map((choice, index) => {
+                    return (
+                      <div key={index}>
+                        <label className="visually-hidden">{choice}: {votes[index]}</label>
+
+                        <button onClick={() => {this.vote(votes, index)}}>
+                          {choice}
+                        </button>
+                      </div>
                     )
-                  }}>
-                    {choice}
-                  </button>
-                </div>
-              )
-            })
+                  })
+                }
+              </div>
           }
+
         </div>
       </div>
     )

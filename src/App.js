@@ -3,6 +3,8 @@ import firebase from './firebase.js';
 import Form from './Form.js';
 import Poll from './Poll.js';
 
+import swal from '@sweetalert/with-react';
+
 class App extends Component {
   constructor() {
     super();
@@ -44,6 +46,16 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // swal(
+    //   <div>
+    //     <h1>Hello!</h1>
+    //     <p>I am a React component inside a SweetAlert modal.</p>
+    //   </div>,
+    //   {
+    //     icon: 'success',
+    //   }
+    // )
+    
     const dbRef = firebase.database().ref();
 
     // with this ref, firebase will only react when change happens at the root

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import swal from '@sweetalert/with-react';
 
 class Form extends Component {
   constructor(props) {
@@ -54,6 +55,10 @@ class Form extends Component {
       name: '',
       question: '',
     });
+
+    // swal(
+
+    // );
   }
 
   render() {
