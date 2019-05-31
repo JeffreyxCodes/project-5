@@ -33,13 +33,17 @@ h4 {
 
 h1 {
   font-size: 4.2rem;
-  text-align: center;
-  color: white;
-  text-shadow: 2px 2px palegreen,
-               2px -2px lightskyblue,
-               -2px -2px plum,
-               -2px 2px coral;
 }
+
+.full-view {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
 
 
 
@@ -47,7 +51,6 @@ h1 {
  > form
 *****************************************************************************************/
 form {
-  height: 100vh;
   padding: 40px 0;
   display: flex;
   flex-direction: column;
@@ -76,11 +79,12 @@ textarea {
   padding: 40px 0;
 }
 
-.poll-container:nth-child(odd) {
-  background-color: rgb(233, 187, 144);
+.poll-container:nth-child(even) {
+  background-color: rgb(214, 214, 214);
   /* color: white; */
 }
 
 canvas {
   /* background-color: white; */
 }
+

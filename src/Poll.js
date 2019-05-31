@@ -103,25 +103,25 @@ class Poll extends Component {
 
           {
             this.state.voted
-              ? <h4>Thanks for voting</h4>
+              ? <div><h4>Thanks for voting</h4></div>
               : <div>
-                <h4>Vote For:</h4>
-                {
-                  choiceNames.map((choice, index) => {
-                    return (
-                      <div key={index}>
-                        <label className="visually-hidden">{choice}: {votes[index]}</label>
+                  <h4>Vote For:</h4>
+                  {
+                    choiceNames.map((choice, index) => {
+                      return (
+                        <div key={index}>
+                          <label className="visually-hidden">{choice}: {votes[index]}</label>
 
-                        <button onClick={() => {this.vote(votes, index)}}>
-                          {choice}
-                        </button>
-                      </div>
-                    )
-                  })
-                }
-              </div>
+                          <button onClick={() => {this.vote(votes, index)}}>
+                            {choice}
+                          </button>
+                        </div>
+                      )
+                    })
+                  }
+                </div>
           }
-
+          
         </div>
       </div>
     )

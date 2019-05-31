@@ -70,11 +70,11 @@ class Form extends Component {
           Poll Question
         </label>
         <textarea
+          required
           id="question"
           name="question"
           placeholder="Poll Question"
           rows="3"
-          required
           value={this.state.question}
           onChange={this.handleInput}>
         </textarea>
@@ -121,7 +121,7 @@ class Form extends Component {
         {this.state.choices.length < 5 ? <button onClick={this.addChoice}>Add Another Choice</button> : null}
         {this.state.choices.length > 2 ? <button onClick={this.removeChoice}>Remove Last Choice</button> : null}
 
-        <button onClick={this.submitPoll}>Submit</button>
+        <button onSubmit={this.submitPoll}>Submit</button>
       </form>
     )
   }
