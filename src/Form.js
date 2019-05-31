@@ -42,7 +42,7 @@ class Form extends Component {
 
   submitPoll = (e) => {
     e.preventDefault();
-    
+  
     this.props.addPoll({
       name: this.state.name,
       question: this.state.question,
@@ -63,7 +63,7 @@ class Form extends Component {
 
   render() {
     return (
-      <form action="" className="wrapper">
+      <form action="" className="wrapper" onSubmit={this.submitPoll}>
         <label
           className="visually-hidden"
           htmlFor="question">
@@ -121,7 +121,7 @@ class Form extends Component {
         {this.state.choices.length < 5 ? <button onClick={this.addChoice}>Add Another Choice</button> : null}
         {this.state.choices.length > 2 ? <button onClick={this.removeChoice}>Remove Last Choice</button> : null}
 
-        <button onSubmit={this.submitPoll}>Submit</button>
+        <input type="submit" value="Submit"></input>
       </form>
     )
   }
