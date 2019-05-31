@@ -60,7 +60,7 @@ class App extends Component {
     //   }
     // )
 
-    const dbRef = firebase.database().ref();
+    const dbRef = firebase.database().ref().orderByKey();
 
     // with this ref, firebase will only react when change happens at the root
     dbRef.on('value', response => {
@@ -85,23 +85,25 @@ class App extends Component {
     return (
       <div className="App">
         <div className="full-view">
-          {/* <h1>(╯°□°)╯︵ ┻━┻</h1> */}
+          <h1>(╯°□°)╯︵ ┻━┻</h1>
           <h1>POLL UP</h1>
           <Form addPoll={this.addPoll} />
         </div>
 
-        {
-          this.state.isLoading
-            ? <h2>Loading...</h2>
-            : this.state.polls.map(pollObject => {
-              return <Poll
-                key={pollObject.key}
-                id={pollObject.key}
-                poll={pollObject.poll}
-                addVote={this.addVote}
-              />
-            })
-        }
+        <section className="polls-container">
+          {
+            this.state.isLoading
+              ? <h2>Loading...</h2>
+              : this.state.polls.map(pollObject => {
+                return <Poll
+                  key={pollObject.key}
+                  id={pollObject.key}
+                  poll={pollObject.poll}
+                  addVote={this.addVote}
+                />
+              })
+          }
+        </section>
       </div>
     );
   }

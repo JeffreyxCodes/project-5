@@ -17,7 +17,7 @@ class Poll extends Component {
     const myChartRef = this.chartRef.current.getContext("2d");
 
     Chart.defaults.global.defaultFontColor = 'black';
-    // Chart.defaults.global.defaultFontSize = '16';
+    Chart.defaults.global.defaultFontSize = 20;
     this.chart = new Chart(myChartRef, {
       type: "horizontalBar",
       data: {
@@ -57,8 +57,9 @@ class Poll extends Component {
         },
         tooltips: {
           intersect: false,
-          // titleFontSize: '12',
-          // bodyFontSize: '12',
+          // titleFontSize: 20,
+          // bodyFontSize: 20,
+          // bodySpacing: 5,
         },
         scales: {
           xAxes: [
@@ -105,14 +106,15 @@ class Poll extends Component {
             this.state.voted
               ? <div><h4>Thanks for voting</h4></div>
               : <div>
-                  <h4>Vote For:</h4>
+                <h4>Vote For:</h4>
+                <div className="choices-container">
                   {
                     choiceNames.map((choice, index) => {
                       return (
                         <div key={index}>
                           <label className="visually-hidden">{choice}: {votes[index]}</label>
 
-                          <button onClick={() => {this.vote(votes, index)}}>
+                          <button onClick={() => { this.vote(votes, index) }}>
                             {choice}
                           </button>
                         </div>
@@ -120,8 +122,9 @@ class Poll extends Component {
                     })
                   }
                 </div>
+              </div>
           }
-          
+
         </div>
       </div>
     )
