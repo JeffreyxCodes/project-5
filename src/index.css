@@ -89,6 +89,10 @@ textarea {
   margin: 0 auto 80px;
 }
 
+.poll-container:last-child {
+  margin: 0 auto;
+}
+
 .poll-container:nth-child(even) {
   /* background-color: rgb(214, 214, 214); */
   /* color: white; */

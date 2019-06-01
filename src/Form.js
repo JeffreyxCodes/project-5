@@ -43,18 +43,29 @@ class Form extends Component {
   submitPoll = (e) => {
     e.preventDefault();
   
-    this.props.addPoll({
-      name: this.state.name,
-      question: this.state.question,
-      choiceNames: this.state.choices,
-      votes: new Array(this.state.choices.length).fill(0)
-    });
+    if (this.state.question.trim()) {
+      this.props.addPoll({
+        name: this.state.name,
+        question: this.state.question,
+        choiceNames: this.state.choices,
+        votes: new Array(this.state.choices.length).fill(0)
+      });
 
-    this.setState({
-      choices: ['', ''],
-      name: '',
-      question: '',
-    });
+      this.setState({
+        choices: ['', ''],
+        name: '',
+        question: '',
+      });
+    } else {
+      swal(
+        <div>
+          <h2>The poll question is empty, please enter one or you'll break the internet 😆</h2>
+        </div>,
+        {
+          button: "Silly me 😝"
+        }
+      )
+    }
 
     // swal(
 
@@ -71,6 +82,7 @@ class Form extends Component {
         </label>
         <textarea
           required
+          maxlength="200"
           id="question"
           name="question"
           placeholder="Poll Question"
@@ -78,7 +90,7 @@ class Form extends Component {
           value={this.state.question}
           onChange={this.handleInput}>
         </textarea>
-
+ 
         <label
           className="visually-hidden"
           htmlFor="name">
@@ -90,6 +102,8 @@ class Form extends Component {
           name="name"
           placeholder="Name"
           required 
+          pattern="\S.{0,40}"
+          title="Please enter 1 to 40 characters."
           value={this.state.name}
           onChange={this.handleInput} />
 
@@ -110,6 +124,8 @@ class Form extends Component {
                   name={"choice" + index} 
                   placeholder={"Choice " + index} 
                   required
+                  pattern="\S.{0,60}"
+                  title="Please enter 1 to 60 characters."
                   data-index={index - 1}
                   value={this.state.choices[index - 1]}
                   onChange={this.handleChoiceInput} />
@@ -118,8 +134,8 @@ class Form extends Component {
           })
         }
 
-        {this.state.choices.length < 5 ? <button onClick={this.addChoice}>Add Another Choice</button> : null}
-        {this.state.choices.length > 2 ? <button onClick={this.removeChoice}>Remove Last Choice</button> : null}
+        {this.state.choices.length < 5 ? <button type="button" onClick={this.addChoice}>Add Another Choice</button> : null}
+        {this.state.choices.length > 2 ? <button type="button" onClick={this.removeChoice}>Remove Last Choice</button> : null}
 
         <input type="submit" value="Submit"></input>
       </form>
