@@ -62,14 +62,32 @@ form input,
 textarea {
   margin: 5px auto;
   padding: 10px;
+  border: 3px solid;
 }
 
 textarea {
   width: 80%;
 }
 
+.choice1 {
+  border-color: palegreen;
+}
 
+.choice2 {
+  border-color: lightskyblue;
+}
 
+.choice3 {
+  border-color: plum;
+}
+
+.choice4 {
+  border-color: coral;
+}
+
+.choice5 {
+  border-color: khaki;
+}
 
 /*****************************************************************************************
  > poll
@@ -93,20 +111,6 @@ textarea {
   margin: 0 auto;
 }
 
-.poll-container:nth-child(even) {
-  /* background-color: rgb(214, 214, 214); */
-  /* color: white; */
-}
-
-canvas {
-  /* background-color: white; */
-}
-
-button {
-  padding: 5px 20px;
-  margin: 5px;
-}
-
 .polls-container h3 {
   margin-bottom: 20px;
 }
@@ -121,3 +125,39 @@ button {
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.choices-container button {
+  padding: 5px 20px;
+  margin: 5px;
+  border: 3px solid;
+}
+
+.choices-container button:hover {
+  background-color: white;
+}
+
+.choices-container .choice1 {
+  border-color: palegreen;
+  background-color: palegreen;
+}
+
+.choices-container .choice2 {
+  border-color: lightskyblue;
+  background-color: lightskyblue;
+}
+
+.choices-container .choice3 {
+  border-color: plum;
+  background-color: plum;
+}
+
+.choices-container .choice4 {
+  border-color: coral;
+  background-color: coral;
+}
+
+.choices-container .choice5 {
+  border-color: khaki;
+  background-color: khaki;
+}
+

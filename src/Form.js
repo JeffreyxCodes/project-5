@@ -11,12 +11,15 @@ class Form extends Component {
     }
   }
 
-  handleInput = (e) => { 
+  // sets the input element values to its repective state values
+  handleInput = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     });
   }
 
+  // sets the choice input elements to its repective state values;
+  // having a seperate input handler for cleaner code
   handleChoiceInput = (e) => {
     const newChoices = [...this.state.choices];
     newChoices[e.currentTarget.dataset.index] = e.target.value;
@@ -25,6 +28,7 @@ class Form extends Component {
     });
   }
 
+  // adds another choice input field
   addChoice = () => {
     const newChoices = [...this.state.choices, ''];
     this.setState({
@@ -32,6 +36,7 @@ class Form extends Component {
     });
   }
 
+  // remove the last choice input field
   removeChoice = () => {
     const newChoices = [...this.state.choices];
     newChoices.pop();
@@ -40,9 +45,11 @@ class Form extends Component {
     });
   }
 
+  // submit the poll with the information given
   submitPoll = (e) => {
     e.preventDefault();
-  
+
+    // used a if statement to do form validation on textarea element
     if (this.state.question.trim()) {
       this.props.addPoll({
         name: this.state.name,
@@ -56,7 +63,18 @@ class Form extends Component {
         name: '',
         question: '',
       });
-    } else {
+
+      swal(
+        <div>
+          <h2>Thanks for submitting</h2>
+          <p>Let's scroll down and check out the available polls!</p>
+        </div>,
+        {
+          icon: 'success',
+          button: "Let's Do It!"
+        }
+      );
+    } else { // poll is not submitted if textarea is empty
       swal(
         <div>
           <h2>The poll question is empty, please enter one or you'll break the internet 😆</h2>
@@ -64,12 +82,8 @@ class Form extends Component {
         {
           button: "Silly me 😝"
         }
-      )
+      );
     }
-
-    // swal(
-
-    // );
   }
 
   render() {
@@ -90,7 +104,7 @@ class Form extends Component {
           value={this.state.question}
           onChange={this.handleInput}>
         </textarea>
- 
+
         <label
           className="visually-hidden"
           htmlFor="name">
@@ -100,8 +114,8 @@ class Form extends Component {
           type="text"
           id="name"
           name="name"
-          placeholder="Name"
-          required 
+          placeholder="Your Name"
+          required
           pattern="\S.{0,40}"
           title="Please enter 1 to 40 characters."
           value={this.state.name}
@@ -112,17 +126,18 @@ class Form extends Component {
             index++;
             return (
               <div key={index}>
-                <label 
-                  className="visually-hidden" 
+                <label
+                  className="visually-hidden"
                   htmlFor={"choice" + index}>
                   {"Choice " + index}
                 </label>
 
-                <input 
-                  type="text" 
-                  id={"choice" + index} 
-                  name={"choice" + index} 
-                  placeholder={"Choice " + index} 
+                <input
+                  type="text"
+                  id={"choice" + index}
+                  className={"choice" + index}
+                  name={"choice" + index}
+                  placeholder={"Choice " + index}
                   required
                   pattern="\S.{0,60}"
                   title="Please enter 1 to 60 characters."
@@ -137,7 +152,7 @@ class Form extends Component {
         {this.state.choices.length < 5 ? <button type="button" onClick={this.addChoice}>Add Another Choice</button> : null}
         {this.state.choices.length > 2 ? <button type="button" onClick={this.removeChoice}>Remove Last Choice</button> : null}
 
-        <input type="submit" value="Submit"></input>
+        <button type="submit">Submit</button>
       </form>
     )
   }

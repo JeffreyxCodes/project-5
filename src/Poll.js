@@ -114,7 +114,7 @@ class Poll extends Component {
                         <div key={index}>
                           <label className="visually-hidden">{choice}: {votes[index]}</label>
 
-                          <button onClick={() => { this.vote(votes, index) }}>
+                          <button className={"choice" + (index + 1)} onClick={() => { this.vote(votes, index) }}>
                             {choice}
                           </button>
                         </div>
