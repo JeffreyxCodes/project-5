@@ -4,8 +4,6 @@ import Form from './Form.js';
 import Poll from './Poll.js';
 import Comment from './Comment.js';
 
-import swal from '@sweetalert/with-react';
-
 class App extends Component {
   constructor() {
     super();
@@ -48,19 +46,13 @@ class App extends Component {
     dbRef.push(poll);
   }
 
-  componentDidMount() {
-    // for testing swal on submit in form
-    // swal(
-    //   <div>
-    //     <h2>Thanks for submitting</h2>
-    //     <p>Let's scroll down and check out the available polls!</p>
-    //   </div>,
-    //   {
-    //     icon: 'success',
-    //     button: "Let's Do It!"
-    //   }
-    // )
+  // scroll to top
+  toTop = () => {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 
+  componentDidMount() {
     const dbRef = firebase.database().ref().orderByKey();
 
     dbRef.on('value', response => {
@@ -82,6 +74,15 @@ class App extends Component {
         isLoading: false,
       });
     });
+
+    // display scroll to top button when scrolled down enough
+    window.onscroll = function() {
+      if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+        document.getElementById("toTop").style.display = "block";
+      } else {
+        document.getElementById("toTop").style.display = "none";
+      }
+    }
   }
 
   render() {
@@ -114,6 +115,8 @@ class App extends Component {
               })
           }
         </section>
+
+        <button id="toTop" onClick={this.toTop}><h2><p className="visually-hidden">Back to top.</p>^</h2></button>
       </div>
     );
   }

@@ -36,7 +36,7 @@ h1 {
   margin: -30px auto 0;
   font-size: 4.2rem;
   color: white;
-  text-shadow: palegreen 2px 4px, lightskyblue 4px 8px, plum 6px 12px, coral 8px 16px, khaki 10px 20px;
+  text-shadow: palegreen 2px 4px, lightskyblue 4px 8px, plum 6px 12px, coral 8px 16px, khaki 10px 20px, lightgray -1px -1px;
 }
 
 h2 {
@@ -52,6 +52,7 @@ button,
   background-color: rgb(49, 49, 49);
   color: white;
   border-radius: 5px;
+  outline: none;
 }
 
 input:focus,
@@ -69,6 +70,17 @@ button:hover {
   flex-direction: column;
   align-items: center;
   background-image: linear-gradient(to top, #313131, #77516a, #d36f73, #ffa954, #f7ff44);
+}
+
+#toTop {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  cursor: pointer;
+  padding: 7px 15px;
+  background-color: coral;
 }
 
 
@@ -93,6 +105,7 @@ textarea {
   padding: 10px;
   border: 5px solid gray;
   border-radius: 5px;
+  outline: none;
 }
 
 textarea {
@@ -148,7 +161,6 @@ textarea {
   padding: 40px 0;
   position: relative;
   background-color: white;
-  /* border: 3px solid black; */
 }
 
 .choices-container {
@@ -162,6 +174,7 @@ textarea {
   color: black;
 }
 
+.choices-container button:focus,
 .choices-container button:hover {
   background-color: white;
 }
@@ -205,7 +218,6 @@ textarea {
   max-height: 900px;
   overflow-y: scroll;
   background-color: white;
-  /* border: 3px solid purple; */
 }
 
 .comment-container p {
@@ -237,5 +249,14 @@ textarea {
   }
   .comment-container {
     width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 3.3rem;
+  }
+  h2 {
+    font-size: 1.3rem;
   }
 }

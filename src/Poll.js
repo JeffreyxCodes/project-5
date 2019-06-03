@@ -55,12 +55,6 @@ class Poll extends Component {
         legend: {
           display: false,
         },
-        tooltips: {
-          intersect: false,
-          // titleFontSize: 20,
-          // bodyFontSize: 20,
-          // bodySpacing: 5,
-        },
         scales: {
           xAxes: [
             {
@@ -74,6 +68,7 @@ class Poll extends Component {
     });
   }
 
+  // add a vote 
   vote = (votes, index) => {
     this.props.addVote(
       this.chart, // passing chart so chart.update() can be used
@@ -88,6 +83,7 @@ class Poll extends Component {
   }
 
   render() {
+    // deconstruct
     const {
       question,
       name,
