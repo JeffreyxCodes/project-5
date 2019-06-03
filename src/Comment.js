@@ -7,7 +7,8 @@ class Comment extends Component {
     super(props);
 
     this.state = {
-      comment: ''
+      comment: '',
+      displayComments: false
     }
   }
 
@@ -32,47 +33,66 @@ class Comment extends Component {
     } else {
       swal(
         <div>
-          <h2>Posting an empty comment is a no-no, please enter one with content or you'll a dog cry 😆</h2>
+          <h2>Posting an empty comment is a no-no, please enter one with content.</h2>
         </div>,
         {
-          button: "Silly me 😝"
+          button: "Silly me"
         }
       );
     }
   }
 
+  // toggle comment display 
+  toggleComments = () => {
+    this.setState({
+      displayComments: !this.state.displayComments
+    });
+  }
+
+  componentDidMount() {
+    if (window.innerWidth > 1000) {
+      this.setState({
+        displayComments: true
+      });
+    }
+  }
+
   render() {
     return (
-      <div className="comment-container">
-        <form onSubmit={this.postComment}>
-          <label
-            className="visually-hidden"
-            htmlFor="comment">
-            Comment
-          </label>
-          <textarea
-            required
-            maxLength="200"
-            id="comment"
-            name="comment"
-            placeholder="Comment"
-            rows="3"
-            value={this.state.comment}
-            onChange={this.handleInput}>
-          </textarea>
+      this.state.displayComments
+        ? <div className="comment-container">
+            <button onClick={this.toggleComments}>Hide Comments</button>
 
-          <button type="submit">Post Comment</button>
-        </form>
+            <form onSubmit={this.postComment}>
+              <label
+                className="visually-hidden"
+                htmlFor="comment">
+                Post your comment
+            </label>
+              <textarea
+                required
+                maxLength="200"
+                id="comment"
+                name="comment"
+                placeholder="What's your thought on this poll?"
+                rows="3"
+                value={this.state.comment}
+                onChange={this.handleInput}>
+              </textarea>
+              <button type="submit">Post Comment</button>
+            </form>
 
-        <div>
-          {
-            this.props.comments
-              ? Object.keys(this.props.comments).reverse().map(comment => <p key={comment}>{this.props.comments[comment]}</p>)
-              : null
-          }
-        </div>
-
-      </div>
+            <div>
+              {
+                this.props.comments
+                  ? Object.keys(this.props.comments).reverse().map(comment => <p key={comment}>{this.props.comments[comment]}</p>)
+                  : null
+              }
+            </div>
+          </div>
+        : <div className="comment-container">
+            <button onClick={this.toggleComments}>Show Comments</button>
+          </div>
     );
   }
 }

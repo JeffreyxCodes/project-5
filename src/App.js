@@ -88,18 +88,17 @@ class App extends Component {
     return (
       <div className="App">
         <div className="full-view">
-          <h1>(╯°□°)╯︵ ┻━┻</h1>
           <h1>POLL UP</h1>
           <Form addPoll={this.addPoll} />
         </div>
 
-        <section className="polls-container">
+        <section className="content-container">
           {
             this.state.isLoading
               ? <h2>Loading...</h2>
               : this.state.polls.map(pollObject => {
                 return (
-                  <Fragment key={pollObject.key}>
+                  <div className="polls-container wrapper" key={pollObject.key}>
                     <Poll
                       id={pollObject.key}
                       poll={pollObject.poll}
@@ -110,7 +109,7 @@ class App extends Component {
                       comments={pollObject.poll.comments}
                       addComment={this.addComment}
                     />
-                  </Fragment>
+                  </div>
                 )
               })
           }

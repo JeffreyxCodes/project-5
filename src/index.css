@@ -3,8 +3,6 @@
 *****************************************************************************************/
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:700;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace, serif;font-size:1em;}pre{white-space:pre-wrap;word-wrap:break-word;}q{quotes:\201C \201D \2018 \2019;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-.5em;}sub{bottom:-.25em;}img{border:0;}svg:not(:root){overflow:hidden;}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,html input[type=button],/* 1 */input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}button[disabled],input[disabled]{cursor:default;}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0;}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}body,figure{margin:0;}legend,button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}
 
-.clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
-
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 .visually-hidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
@@ -16,35 +14,61 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 *****************************************************************************************/
 body {
   font-size: 125%;
+  font-family: 'Roboto', sans-serif;
 }
 
 .wrapper {
-  width: 80%;
+  width: 90%;
   max-width: 1440px;
   margin: 0 auto;
 }
 
-h1,
 h2,
 h3,
 h4 {
+  font-family: 'Wellfleet', cursive;
   margin: 0;
+  font-weight: normal;
 }
 
 h1 {
+  font-family: 'Bungee', cursive;
+  margin: -30px auto 0;
   font-size: 4.2rem;
+  color: white;
+  text-shadow: palegreen 2px 4px, lightskyblue 4px 8px, plum 6px 12px, coral 8px 16px, khaki 10px 20px;
+}
+
+h2 {
+  line-height: 1.2;
+}
+
+button,
+[type="submit"] {
+  font-family: 'Wellfleet', cursive;
+  padding: 5px 10px;
+  margin: 5px;
+  border: 5px solid white;
+  background-color: rgb(49, 49, 49);
+  color: white;
+  border-radius: 5px;
+}
+
+input:focus,
+input:hover,
+textarea:focus,
+textarea:hover,
+button:focus,
+button:hover {
+  border-style: dashed;
 }
 
 .full-view {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-}
-
-* {
-  border: 1px solid red;
+  background-image: linear-gradient(to top, #313131, #77516a, #d36f73, #ffa954, #f7ff44);
 }
 
 
@@ -53,22 +77,27 @@ h1 {
  > form
 *****************************************************************************************/
 form {
-  padding: 40px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-form input,
+.poll-form {
+  margin-top: -15px;
+}
+
+input,
 textarea {
-  margin: 5px auto;
+  margin: 2px auto;
   padding: 10px;
-  border: 3px solid;
+  border: 5px solid gray;
+  border-radius: 5px;
 }
 
 textarea {
   width: 80%;
+  border: 10px solid gray;
 }
 
 .choice1 {
@@ -94,31 +123,32 @@ textarea {
 /*****************************************************************************************
  > poll
 *****************************************************************************************/
-.polls-container {
-  background-color: lightslategray;
+.content-container {
+  background-color: rgb(49, 49, 49);
   padding: 80px 0;
 }
 
-.poll-container {
-  background-color: white;
-  text-align: center;
-  padding: 40px 0;
-  position: relative;
-  border: 3px solid black;
-  /* width: 75%; */
-  margin: 80px auto 0;
-}
-
-.poll-container:first-child {
-  margin: 0 auto;
-}
-
-.polls-container h3 {
+.content-container h3 {
   margin-bottom: 20px;
 }
 
-.polls-container h4 {
+.content-container h4 {
   margin: 20px auto 0;
+}
+
+.polls-container {
+  display: flex;
+  flex-direction: row;
+  margin: 80px auto 0;
+}
+
+.poll-container {
+  width: 60%;
+  text-align: center;
+  padding: 40px 0;
+  position: relative;
+  background-color: white;
+  /* border: 3px solid black; */
 }
 
 .choices-container {
@@ -129,9 +159,7 @@ textarea {
 }
 
 .choices-container button {
-  padding: 5px 20px;
-  margin: 5px;
-  border: 3px solid;
+  color: black;
 }
 
 .choices-container button:hover {
@@ -163,3 +191,51 @@ textarea {
   background-color: khaki;
 }
 
+.choices-container button:focus,
+.choices-container button:hover {
+  border-style: dashed;
+}
+
+
+/*****************************************************************************************
+ > comments
+*****************************************************************************************/
+.comment-container {
+  width: 40%;
+  max-height: 900px;
+  overflow-y: scroll;
+  background-color: white;
+  /* border: 3px solid purple; */
+}
+
+.comment-container p {
+  padding: 0 10px;
+  background-color: lightgray;
+}
+
+.comment-container button {
+  display: block;
+  margin: 20px auto;
+}
+
+.comment-container button:focus,
+.comment-container button:hover {
+  color: black;
+  background-color: white;
+  border-color: black;
+}
+
+/*****************************************************************************************
+ > media query
+*****************************************************************************************/
+@media (max-width: 1000px) {
+  .polls-container {
+    flex-direction: column;
+  }
+  .poll-container {
+    width: 100%;
+  }
+  .comment-container {
+    width: 100%;
+  }
+}

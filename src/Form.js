@@ -77,10 +77,10 @@ class Form extends Component {
     } else { // poll is not submitted if textarea is empty
       swal(
         <div>
-          <h2>The poll question is empty, please enter one or you'll break the internet 😆</h2>
+          <h2>The poll question is empty, please enter one or you'll break the internet <span role="img" aria-label="Grinning Squinting Face">😆</span></h2>
         </div>,
         {
-          button: "Silly me 😝"
+          button: "Silly me"
         }
       );
     }
@@ -99,7 +99,7 @@ class Form extends Component {
           maxLength="200"
           id="question"
           name="question"
-          placeholder="Poll Question"
+          placeholder="What do you want the general public to weight in on?"
           rows="3"
           value={this.state.question}
           onChange={this.handleInput}>
@@ -114,7 +114,7 @@ class Form extends Component {
           type="text"
           id="name"
           name="name"
-          placeholder="Your Name"
+          placeholder="What's your name?"
           required
           pattern="\S.{0,40}"
           title="Please enter 1 to 40 characters."
@@ -152,7 +152,7 @@ class Form extends Component {
         {this.state.choices.length < 5 ? <button type="button" onClick={this.addChoice}>Add Another Choice</button> : null}
         {this.state.choices.length > 2 ? <button type="button" onClick={this.removeChoice}>Remove Last Choice</button> : null}
 
-        <button type="submit">Submit</button>
+        <button type="submit">Submit Poll</button>
       </form>
     )
   }

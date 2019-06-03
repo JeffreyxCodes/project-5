@@ -106,7 +106,7 @@ class Poll extends Component {
             this.state.voted
               ? <div><h4>Thanks for voting</h4></div>
               : <div>
-                <h4>Vote For:</h4>
+                <h4>What do you want to vote for?</h4>
                 <div className="choices-container">
                   {
                     choiceNames.map((choice, index) => {
