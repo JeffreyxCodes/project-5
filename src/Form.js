@@ -88,7 +88,7 @@ class Form extends Component {
 
   render() {
     return (
-      <form action="" className="wrapper" onSubmit={this.submitPoll}>
+      <form className="poll-form wrapper" onSubmit={this.submitPoll}>
         <label
           className="visually-hidden"
           htmlFor="question">
@@ -96,7 +96,7 @@ class Form extends Component {
         </label>
         <textarea
           required
-          maxlength="200"
+          maxLength="200"
           id="question"
           name="question"
           placeholder="Poll Question"

@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import firebase from './firebase.js';
 import Form from './Form.js';
 import Poll from './Poll.js';
+import Comment from './Comment.js';
 
 import swal from '@sweetalert/with-react';
 
@@ -62,7 +63,6 @@ class App extends Component {
 
     const dbRef = firebase.database().ref().orderByKey();
 
-    // with this ref, firebase will only react when change happens at the root
     dbRef.on('value', response => {
       const newPolls = [];
       const polls = response.val();
@@ -98,12 +98,20 @@ class App extends Component {
             this.state.isLoading
               ? <h2>Loading...</h2>
               : this.state.polls.map(pollObject => {
-                return <Poll
-                  key={pollObject.key}
-                  id={pollObject.key}
-                  poll={pollObject.poll}
-                  addVote={this.addVote}
-                />
+                return (
+                  <Fragment key={pollObject.key}>
+                    <Poll
+                      id={pollObject.key}
+                      poll={pollObject.poll}
+                      addVote={this.addVote}
+                    />
+                    <Comment 
+                      id={pollObject.key}
+                      comments={pollObject.poll.comments}
+                      addComment={this.addComment}
+                    />
+                  </Fragment>
+                )
               })
           }
         </section>
