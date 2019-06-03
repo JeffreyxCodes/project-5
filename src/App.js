@@ -96,7 +96,7 @@ class App extends Component {
         <section className="content-container">
           {
             this.state.isLoading
-              ? <h2>Loading...</h2>
+              ? <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
               : this.state.polls.map(pollObject => {
                 return (
                   <div className="polls-container wrapper" key={pollObject.key}>
