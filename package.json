@@ -2,6 +2,7 @@
   "name": "jeffrey-xu-project-5",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jeffreyxcodes.github.io/poll-up/",
   "dependencies": {
     "@sweetalert/with-react": "^0.1.1",
     "chart.js": "^2.8.0",
@@ -35,6 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://jeffreyxcodes.github.io/pull-up/"
+  }
 }
