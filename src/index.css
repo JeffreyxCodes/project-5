@@ -23,6 +23,7 @@ body {
   margin: 0 auto;
 }
 
+h1,
 h2,
 h3,
 h4 {
@@ -33,7 +34,6 @@ h4 {
 
 h1 {
   font-family: 'Bungee', cursive;
-  margin: -30px auto 0;
   font-size: 4.2rem;
   color: white;
   text-shadow: palegreen 2px 4px, lightskyblue 4px 8px, plum 6px 12px, coral 8px 16px, khaki 10px 20px, lightgray -1px -1px;
@@ -95,10 +95,6 @@ form {
   align-items: center;
 }
 
-.poll-form {
-  margin-top: -15px;
-}
-
 input,
 textarea {
   margin: 2px auto;
@@ -111,6 +107,7 @@ textarea {
 textarea {
   width: 80%;
   border: 10px solid gray;
+  min-height: 100px;
 }
 
 .choice1 {

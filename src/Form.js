@@ -50,7 +50,7 @@ class Form extends Component {
     e.preventDefault();
 
     // used a if statement to do form validation on textarea element
-    if (this.state.question.trim()) {
+    // if (this.state.question.trim()) {
       this.props.addPoll({
         name: this.state.name,
         question: this.state.question,
@@ -64,26 +64,26 @@ class Form extends Component {
         question: '',
       });
 
-      swal(
-        <div>
-          <h2>Thanks for submitting</h2>
-          <p>Let's scroll down and check out the available polls!</p>
-        </div>,
-        {
-          icon: 'success',
-          button: "Let's Do It!"
-        }
-      );
-    } else { // poll is not submitted if textarea is empty
-      swal(
-        <div>
-          <h2>The poll question is empty, please enter one or you'll break the internet <span role="img" aria-label="Grinning Squinting Face">😆</span></h2>
-        </div>,
-        {
-          button: "Silly me"
-        }
-      );
-    }
+    //   swal(
+    //     <div>
+    //       <h2>Thanks for submitting</h2>
+    //       <p>Let's scroll down and check out the available polls!</p>
+    //     </div>,
+    //     {
+    //       icon: 'success',
+    //       button: "Let's Do It!"
+    //     }
+    //   );
+    // } else { // poll is not submitted if textarea is empty
+    //   swal(
+    //     <div>
+    //       <h2>The poll question is empty, please enter one or you'll break the internet <span role="img" aria-label="Grinning Squinting Face">😆</span></h2>
+    //     </div>,
+    //     {
+    //       button: "Silly me"
+    //     }
+    //   );
+    // }
   }
 
   render() {
@@ -95,7 +95,7 @@ class Form extends Component {
           Poll Question
         </label>
         <textarea
-          required
+          // required
           maxLength="200"
           id="question"
           name="question"
@@ -115,7 +115,7 @@ class Form extends Component {
           id="name"
           name="name"
           placeholder="What's your name?"
-          required
+          // required
           pattern="\S.{0,40}"
           title="Please enter 1 to 40 characters."
           value={this.state.name}
@@ -138,7 +138,7 @@ class Form extends Component {
                   className={"choice" + index}
                   name={"choice" + index}
                   placeholder={"Choice " + index}
-                  required
+                  // required
                   pattern="\S.{0,60}"
                   title="Please enter 1 to 60 characters."
                   data-index={index - 1}
