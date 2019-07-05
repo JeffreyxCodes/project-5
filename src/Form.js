@@ -95,7 +95,7 @@ class Form extends Component {
           Poll Question
         </label>
         <textarea
-          // required
+          required
           maxLength="200"
           id="question"
           name="question"
@@ -115,9 +115,9 @@ class Form extends Component {
           id="name"
           name="name"
           placeholder="What's your name?"
-          // required
+          required
           pattern="\S.{0,40}"
-          title="Please enter 1 to 40 characters."
+          title="Please enter 1 to 40 characters with no spaces in the beginning."
           value={this.state.name}
           onChange={this.handleInput} />
 
@@ -138,9 +138,9 @@ class Form extends Component {
                   className={"choice" + index}
                   name={"choice" + index}
                   placeholder={"Choice " + index}
-                  // required
+                  required
                   pattern="\S.{0,60}"
-                  title="Please enter 1 to 60 characters."
+                  title="Please enter 1 to 60 characters with no spaces in the beginning."
                   data-index={index - 1}
                   value={this.state.choices[index - 1]}
                   onChange={this.handleChoiceInput} />
